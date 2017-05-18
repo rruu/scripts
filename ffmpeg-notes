@@ -1,0 +1,6 @@
+## Periscope
+## add -vf "transpose=1" if need
+# stream from file periscope ts
+ffmpeg -re -y -i input.ts -c:v libx264 -pix_fmt yuv420p -x264-params keyint=30:no-scenecut=1 -maxrate 800k -bufsize 800k -g 30 -r 30 -c:a aac -ar 44100 -ab 96k -ac 2 -strict -2 -f flv rtmp://de.pscp.tv:80/x/1/{token}
+# stream from file periscope mp4
+ffmpeg -re -y -i input.mp4 -c:v libx264 -pix_fmt yuv420p -x264-params keyint=60:no-scenecut=1 -maxrate 800k -bufsize 800k -g 30 -r 30 -c:a aac -ar 44100 -ab 96k -ac 2 -strict -2 -f flv rtmp://de.pscp.tv:80/x/1/{token}
